@@ -7,7 +7,7 @@ def main():
         input_data.to_csv(file_out, index=False)
 
 
-    convert_data('../book_data/books.xlsx', 'book_data.csv')
+    convert_data('../_book_data/books.xlsx', 'book_data.csv')
 
 if __name__ == '__main__':
     main()
