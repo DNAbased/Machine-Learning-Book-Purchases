@@ -4,7 +4,10 @@ Contains a data set of nearly all books I have read so far (title and author rem
 
 ![Pages](img/boxplot_pages.png)
 
-![Pages](img/boxplot_price.png)
+![Price](img/boxplot_price.png)
 
-![Pages](img/boxplot_price_per_page.png)
+![Price_per_page](img/boxplot_price_per_page.png)
 
+![Price_pages](img/scatterplot_price_pages.png)
+
+Data last updated: 20200627

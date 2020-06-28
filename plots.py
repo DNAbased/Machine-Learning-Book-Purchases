@@ -26,6 +26,12 @@ g = sns.boxplot(data=books, x='gift', y='pages')
 g.set(xlabel='Gift', ylabel='Pages')
 fig.savefig('img/boxplot_pages.png', dpi=600)
 
+sns.set()
+fig, ax = plt.subplots(figsize=(10, 6))
+g = sns.scatterplot(data=books, x='pages', y='price', hue='gift')
+g.set(xlabel='Pages', ylabel='Price [Euro]')
+fig.savefig('img/scatterplot_price_pages.png', dpi=600)
+
 # from scipy import stats
 # crosstable = pd.crosstab(books['language'], books['gift'])
 # stats.chi2_contingency(crosstable)
