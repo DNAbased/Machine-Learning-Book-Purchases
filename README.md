@@ -14,4 +14,4 @@ Basic first approaches (support vector machine; k-nearest neighbors; gaussian na
 
 ![Price_pages](img/scatterplot_price_pages.png)
 
-Book data last updated: 20200627
+Book data last updated: 20200709
