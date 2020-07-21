@@ -4,7 +4,7 @@ Contains a data set of nearly all books I have read so far (title and author rem
 
 This might allow me to automate my decision making process (i.e. do I want to purchase this book myself?).
 
-Basic first approaches (support vector machine; k-nearest neighbors; gaussian naive bayes; no standardization yet, convergence warning for SVM) yielded accuracies of up to 88 %. See main.py. 
+Current accuracy: 91 % (KNN model).. 
 
 ![Pages](img/boxplot_pages.png)
 
