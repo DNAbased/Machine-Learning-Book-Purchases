@@ -17,10 +17,16 @@ def main():
     
     if args.test:
         books = pd.read_csv('book_data.csv')
-        le = preprocessing.LabelEncoder()
-        books['Gift'] = le.fit_transform(books['Gift'])
-        books['Language'] = le.fit_transform(books['Language'])
-        
+        # le = preprocessing.LabelEncoder()
+        # books['Gift'] = le.fit_transform(books['Gift'])
+        # books['Language'] = le.fit_transform(books['Language']) # need to do this separately to be able to do it in the predictions later on as well
+        gift = {'No': 0, 'Yes': 1}
+        language = {'English': 0, 'German': 1}
+
+        books['Gift'] = [gift[item] for item in books['Gift']]
+        books['Language'] = [language[item] for item in books['Language']]
+
+
         X = books[['Price', 'Pages', 'Price_per_page', 'Language']]
         y = books[['Gift']]
         
@@ -40,13 +46,42 @@ def main():
         prediction = KNN.predict(X_test)
         
         print('KNN accuracy : ', accuracy_score(y_test, prediction, normalize = True))
+
     elif args.model:
-        print('WIP1')
-        # model (using all the data) and save the model
+        books = pd.read_csv('book_data.csv') # combine this for both first ifs
+        gift = {'No': 0, 'Yes': 1}
+        language = {'English': 0, 'German': 1}
+
+        books['Gift'] = [gift[item] for item in books['Gift']]
+        books['Language'] = [language[item] for item in books['Language']]
+
+        X = books[['Price', 'Pages', 'Price_per_page', 'Language']]
+        y = books[['Gift']]
+
+        y = y.values.ravel()
+
+        KNN = KNeighborsClassifier(n_neighbors=3)
+        
+        KNN.fit(X, y)
+
+        dump(KNN, 'KNN_book_model.joblib')
 
     else:
-        print('WIP2')
-        # load the model and use the other three args to make a prediction
+        KNN = load('KNN_book_model.joblib')
+
+        ppp = args.price / args.pages
+        if args.language in ['EN', 'en', 'English', 'english']:
+            language = 0
+        else:
+            language = 1
+        user_input = pd.DataFrame({'Pages': [args.pages], 'Price': [args.price], 'Price_per_page': [ppp], 'Language': [language]})
+
+        prediction = KNN.predict(user_input)
+
+        if prediction == [0]:
+            print('Purchase')
+        else:
+            print('Gift')
 
 if __name__ == '__main__':
     main()
