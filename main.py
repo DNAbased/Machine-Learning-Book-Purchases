@@ -70,7 +70,7 @@ def main():
         KNN = load('KNN_book_model.joblib')
 
         ppp = args.price / args.pages
-        if args.language in ['EN', 'en', 'English', 'english']:
+        if args.language in ['EN', 'en', 'English', 'english', '1']:
             language = 0
         else:
             language = 1
