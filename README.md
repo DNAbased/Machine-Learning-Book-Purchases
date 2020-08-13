@@ -14,4 +14,6 @@ Current accuracy: 91 % (KNN model)..
 
 ![Price_pages](img/scatterplot_price_pages.png)
 
-Book data last updated: 20200713
+Total books: 388
+
+Book data last updated: 20200813
